@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import calculateDaysSincePublication from '../../helpers/calculatedaysSincePublication';
 import { CardProps, ImagesApi } from '../../types/types';
 import ContextStore from '../../context/context';
-import styles from '../card/card.module.css';
+import styles from './mainCard.module.css';
 
 import heartIcon from '../../images/heart-thin-icon.svg';
 import redHeart from '../../images/red-heart-icon.svg';
@@ -41,9 +41,12 @@ function MainCard(props : CardProps) {
   };
 
   return (
-    <>
-
-      <img src={ generateApiImage() } alt="imagem da noticia" />
+    <section className={ styles.mainCardContainer }>
+      <img
+        className={ styles.newsImage }
+        src={ generateApiImage() }
+        alt="imagem da noticia"
+      />
       <div className={ styles.card }>
         <div className={ styles.cardHeader }>
           <span> Notícia mais recente </span>
@@ -73,7 +76,7 @@ function MainCard(props : CardProps) {
           </button>
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

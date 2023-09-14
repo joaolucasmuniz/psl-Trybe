@@ -24,7 +24,7 @@ function Home() {
   );
 
   return (
-    <>
+    <section className={ styles.homeContainer }>
       <section>
         { news && (
           <MainCard
@@ -50,7 +50,7 @@ function Home() {
         {currentNav === 'Favoritas'
       && <Favorites />}
       </section>
-    </>
+    </section>
 
   );
 }

@@ -1,0 +1,23 @@
+.headerContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.headerContainer img{
+  margin: 0;
+  padding: 0;
+  height: 5rem;
+}
+
+.titleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: rgba(14, 14, 14, 0.85);
+  color: white;
+}

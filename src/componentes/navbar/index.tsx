@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronRightOutlined, MenuOutlined } from '@mui/icons-material';
+import { ChevronLeftOutlined, MenuOutlined } from '@mui/icons-material';
 import { AppBar, Button, Divider, Hidden, IconButton,
   List, ListItem, SwipeableDrawer, Toolbar, Typography } from '@mui/material';
 
@@ -29,21 +29,24 @@ function NavBar(props: NavBarProps) {
     <AppBar color="default" position="static">
       <Toolbar>
         <Hidden smDown>
-          {navigation.map((item) => (
-            <Button
-              key={ item.id }
-              onClick={ () => setCurrentNav(item.id) }
-              color="inherit"
-            >
-              {item.name}
-            </Button>
-          ))}
+          <div style={ { flex: 1 } }>
+            {navigation.map((item) => (
+              <Button
+                key={ item.id }
+                onClick={ () => setCurrentNav(item.id) }
+                color="inherit"
+              >
+                {item.name}
+              </Button>
+            ))}
+          </div>
+          <MenuOutlined />
         </Hidden>
 
         <Hidden smUp>
           <Button color="inherit" onClick={ () => setOpen(true) }>
             <MenuOutlined />
-            <Typography>
+            <Typography marginLeft="1.2rem">
               filtrar categorias
             </Typography>
           </Button>
@@ -56,18 +59,27 @@ function NavBar(props: NavBarProps) {
         onOpen={ () => setOpen(true) }
         onClose={ () => setOpen(false) }
       >
-
-        <IconButton onClick={ () => setOpen(false) }>
-          <ChevronRightOutlined />
-        </IconButton>
-
+        <div style={ { display: 'flex', justifyContent: 'flex-end' } }>
+          <IconButton onClick={ () => setOpen(false) }>
+            <ChevronLeftOutlined />
+          </IconButton>
+        </div>
         <Divider />
 
-        <List>
+        <List
+          sx={
+          {
+            width: 250,
+          }
+        }
+        >
           {navigation.map((item) => (
             <ListItem key={ item.id }>
               <Button
-                onClick={ () => setCurrentNav(item.id) }
+                onClick={ () => {
+                  setCurrentNav(item.id);
+                  setOpen(false);
+                } }
                 color="inherit"
               >
                 {item.name}

@@ -50,6 +50,7 @@ align-items: center;
 .cardFooter {
   display: flex;
   justify-content: end;
+  align-items: center;
   padding: 1rem;
   border-top: solid 1px gray;
   max-height: 2rem;
@@ -57,11 +58,11 @@ align-items: center;
 }
 
 .cardFooter button {
-  color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: white;
+  background-color:transparent;
+  cursor: pointer;
 }
 
 .cardFooter img {
