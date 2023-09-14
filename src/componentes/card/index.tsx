@@ -2,20 +2,22 @@ import { useContext, useEffect, useState } from 'react';
 import calculateDaysSincePublication from '../../helpers/calculatedaysSincePublication';
 import { CardProps } from '../../types/types';
 import ContextStore from '../../context/context';
+import redHeart from '../../images/red-heart-icon.svg';
+import herartIcon from '../../images/heart-thin-icon.svg';
+
+import styles from './card.module.css';
 
 function Card(props : CardProps) {
   const { id, titulo, introducao, dataPublicacao, link } = props;
   const { favorites, setFavorites } = useContext(ContextStore);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  // Verifique o localStorage e defina o estado inicial com base nele
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     setFavorites(storedFavorites);
     setIsFavorite(storedFavorites.some((item: CardProps) => item.id === id));
   }, [id, setFavorites]);
 
-  // Função para alternar o estado de favorito
   const handleFavorite = () => {
     let updatedFavorites: CardProps[] = [];
 
@@ -26,39 +28,37 @@ function Card(props : CardProps) {
       updatedFavorites = [...favorites, props];
       setIsFavorite(true);
     }
-
-    // Atualize o localStorage com os favoritos atualizados
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
 
-    // Atualize o estado de favoritos
     setFavorites(updatedFavorites);
   };
 
   return (
-    <div className="card">
-      <div className="card-header">
-        <h5 className="card-title">{ titulo }</h5>
+    <div className={ styles.card }>
+      <div className={ styles.cardHeader }>
+        <h4 className="card-title">{ titulo }</h4>
       </div>
-      <div className="card-body">
+      <div className={ styles.cardBody }>
         <p className="card-text">{ introducao }</p>
-        <p
-          className="card-text"
-        >
-          <small className="text-muted">
+
+        <div className={ styles.cardMoreInfo }>
+          <span>
             { calculateDaysSincePublication(dataPublicacao) }
-          </small>
-        </p>
+          </span>
+          <a href={ link } target="_blank" rel="noreferrer">
+            Leia a notícia aqui
+          </a>
+        </div>
+
       </div>
-      <div className="card-footer">
-        <a href={ link } className="btn btn-primary" target="_blank" rel="noreferrer">
-          <small className="text-muted">Leia a notícia aqui</small>
-        </a>
+      <div className={ styles.cardFooter }>
         <button
           type="button"
           onClick={ () => handleFavorite() }
         >
-          { isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
-
+          { isFavorite
+            ? <img src={ redHeart } alt="red heart" />
+            : <img src={ herartIcon } alt="heart icon" />}
         </button>
       </div>
     </div>
