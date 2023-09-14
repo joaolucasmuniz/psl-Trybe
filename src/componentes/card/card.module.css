@@ -2,10 +2,11 @@
 background-color: white;
 display: flex;
 flex-direction: column;
-width: 30rem;
+width: auto;
 height: auto;
 justify-content: space-between;
-box-shadow:-1px 27px 49px -31px rgba(0,0,0,0.53)
+box-shadow:-1px 27px 49px -31px rgba(0,0,0,0.53);
+align-items: center;
 }
 
 .cardHeader {
@@ -52,6 +53,7 @@ box-shadow:-1px 27px 49px -31px rgba(0,0,0,0.53)
   padding: 1rem;
   border-top: solid 1px gray;
   max-height: 2rem;
+  width: 80%;
 }
 
 .cardFooter button {

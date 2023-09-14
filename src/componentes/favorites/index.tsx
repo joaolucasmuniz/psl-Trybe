@@ -2,24 +2,25 @@ import { useContext } from 'react';
 import ContextStore from '../../context/context';
 import Card from '../card';
 
+import styles from '../news/news.module.css';
+
 function Favorites() {
   const { favorites } = useContext(ContextStore);
 
   return (
-    <section>
-      <section>
-        {favorites.map((item, index) => (
-          <Card
-            id={ item.id }
-            key={ index }
-            titulo={ item.titulo }
-            introducao={ item.introducao }
-            dataPublicacao={ item.dataPublicacao }
-            link={ item.link }
-          />
-        ))}
-      </section>
-    </section>
+    <div className={ styles.newsContainer }>
+      {favorites.map((item, index) => (
+        <Card
+          id={ item.id }
+          key={ index }
+          titulo={ item.titulo }
+          introducao={ item.introducao }
+          dataPublicacao={ item.dataPublicacao }
+          link={ item.link }
+        />
+      ))}
+    </div>
+
   );
 }
 

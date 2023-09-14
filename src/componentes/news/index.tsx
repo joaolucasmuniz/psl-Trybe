@@ -3,6 +3,8 @@ import Card from '../card';
 import fetchApi from '../../helpers/fetchApi';
 import { NewsInfo } from '../../types/types';
 
+import styles from './news.module.css';
+
 type NewsProps = {
   type: string;
 };
@@ -21,7 +23,9 @@ function News(props: NewsProps) {
   useEffect(() => {
     const initialFetch = async () => {
       const data = await fetchApi(apiUrls[type as keyof typeof apiUrls]);
-      if (type === 'all') setNews(data.items.slice(0, 1));
+      if (type === 'all') {
+        setNews(data.items.shift());
+      }
       setNews(data.items);
     };
     initialFetch();
@@ -41,17 +45,24 @@ function News(props: NewsProps) {
 
   return (
     <>
-      {news.map((item, index) => index > 0 && (
-        <Card
-          id={ item.id }
-          key={ index }
-          titulo={ item.titulo }
-          introducao={ item.introducao }
-          dataPublicacao={ item.data_publicacao }
-          link={ item.link }
-        />
-      ))}
-      <button onClick={ () => handleClick() }>ver mais</button>
+      <div className={ styles.newsContainer }>
+        {news.map((item, index) => (
+          <Card
+            id={ item.id }
+            key={ index }
+            titulo={ item.titulo }
+            introducao={ item.introducao }
+            dataPublicacao={ item.data_publicacao }
+            link={ item.link }
+          />
+        ))}
+      </div>
+      <button
+        className={ styles.buttonSeeMore }
+        onClick={ () => handleClick() }
+      >
+        ver mais
+      </button>
     </>
   );
 }

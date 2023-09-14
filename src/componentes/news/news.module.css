@@ -1,0 +1,41 @@
+.newsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+  padding: 2rem;
+}
+
+.buttonSeeMore {
+  width: auto;
+  padding: 1rem 10rem;
+  color: rgba(5, 212, 101, 1);
+  border: 1px solid rgba(5, 212, 101, 1);
+  cursor: pointer;
+  background-color: rgb(255,255,255, 1);
+  margin: 2rem auto;
+
+} 
+
+.buttonSeeMore:hover {
+  background: rgba(5, 212, 101, 1);
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .newsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  .newsContainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 95%;
+  }
+
+  .buttonSeeMore {
+    padding: 1rem 5rem;
+  }
+}

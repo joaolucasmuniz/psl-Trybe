@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AppBar, Box, Button, Toolbar } from '@mui/material';
 import News from '../componentes/news';
 import { Newsdata } from '../types/types';
 import MainCard from '../componentes/mainCard';
@@ -23,6 +24,13 @@ function Home() {
     [],
   );
 
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+
   return (
     <>
       <section>
@@ -36,59 +44,32 @@ function Home() {
           />
         )}
       </section>
-
-      <nav>
-        <ul>
-          <li>
-            <button
-              onClick={ () => setCurrentNav('all') }
-            >
-              Mais recentes
-
-            </button>
-          </li>
-
-          <li>
-            <button
-              onClick={ () => setCurrentNav('Release') }
-            >
-              Release
-            </button>
-          </li>
-
-          <li>
-            <button
-              onClick={ () => setCurrentNav('Notícias') }
-            >
-              Notícias
-            </button>
-          </li>
-
-          <li>
-            <button
-              onClick={ () => setCurrentNav('Favoritas') }
-              className={ currentNav === 'Favoritas' ? 'current' : '' }
-
-            >
-              Favoritas
-            </button>
-          </li>
-        </ul>
-      </nav>
-
+      <AppBar color="inherit" position="static">
+        <Toolbar>
+          <Button onClick={ () => setCurrentNav('all') } color="inherit">
+            Mais recentes
+          </Button>
+          <Button onClick={ () => setCurrentNav('Release') } color="inherit">
+            Realease
+          </Button>
+          <Button onClick={ () => setCurrentNav('Notícias') } color="inherit">
+            Notícias
+          </Button>
+          <Button onClick={ () => setCurrentNav('Favoritas') } color="inherit">
+            Favoritas
+          </Button>
+        </Toolbar>
+      </AppBar>
       <section className={ styles.newsSection }>
-        <div className={ styles.newsContainer }>
-          {currentNav === 'all'
+        {currentNav === 'all'
       && <News type="all" />}
-          {currentNav === 'Release'
+        {currentNav === 'Release'
       && <News type="release" />}
-          {currentNav === 'Notícias'
+        {currentNav === 'Notícias'
       && <News type="news" />}
-          {currentNav === 'Favoritas'
+        {currentNav === 'Favoritas'
       && <Favorites />}
-        </div>
       </section>
-
     </>
 
   );
