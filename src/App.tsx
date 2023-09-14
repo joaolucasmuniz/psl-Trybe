@@ -4,7 +4,7 @@ import Home from './pages/home';
 import './App.css';
 import Layout from './componentes/layout';
 import ContextStore from './context/context';
-import { CardProps, NewsInfo } from './types/types';
+import { CardProps } from './types/types';
 
 function App() {
   const [favorites, setFavorites] = useState<CardProps[]>([]);

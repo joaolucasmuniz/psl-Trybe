@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { AppBar, Box, Button, Toolbar } from '@mui/material';
 import News from '../componentes/news';
 import { Newsdata } from '../types/types';
 import MainCard from '../componentes/mainCard';
 import Favorites from '../componentes/favorites';
 
 import styles from './home.module.css';
+import NavBar from '../componentes/navbar';
 
 function Home() {
   const [currentNav, setCurrentNav] = useState('all');
@@ -24,13 +24,6 @@ function Home() {
     [],
   );
 
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
-
-
   return (
     <>
       <section>
@@ -44,22 +37,9 @@ function Home() {
           />
         )}
       </section>
-      <AppBar color="inherit" position="static">
-        <Toolbar>
-          <Button onClick={ () => setCurrentNav('all') } color="inherit">
-            Mais recentes
-          </Button>
-          <Button onClick={ () => setCurrentNav('Release') } color="inherit">
-            Realease
-          </Button>
-          <Button onClick={ () => setCurrentNav('Notícias') } color="inherit">
-            Notícias
-          </Button>
-          <Button onClick={ () => setCurrentNav('Favoritas') } color="inherit">
-            Favoritas
-          </Button>
-        </Toolbar>
-      </AppBar>
+
+      <NavBar setCurrentNav={ setCurrentNav } />
+
       <section className={ styles.newsSection }>
         {currentNav === 'all'
       && <News type="all" />}
