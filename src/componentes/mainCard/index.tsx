@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import calculateDaysSincePublication from '../../helpers/calculatedaysSincePublication';
-import { CardProps } from '../../types/types';
+import { CardProps, ImagesApi } from '../../types/types';
 import ContextStore from '../../context/context';
+import styles from '../card/card.module.css';
+
+import heartIcon from '../../images/heart-thin-icon.svg';
+import redHeart from '../../images/red-heart-icon.svg';
 
 function MainCard(props : CardProps) {
-  const { id, titulo, introducao, dataPublicacao, link } = props;
+  const { id, titulo, introducao, dataPublicacao, link, imagens } = props;
   const { favorites, setFavorites } = useContext(ContextStore);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -29,35 +33,47 @@ function MainCard(props : CardProps) {
     setFavorites(updatedFavorites);
   };
 
-  return (
-    <div className="card">
-      <div className="card-header">
-        <span> Notícia mais recente </span>
-        <h3 className="card-title">{ titulo }</h3>
-      </div>
-      <div className="card-body">
-        <p className="card-text">{ introducao }</p>
-        <p
-          className="card-text"
-        >
-          <small className="text-muted">
-            { calculateDaysSincePublication(dataPublicacao) }
-          </small>
-        </p>
-      </div>
-      <div className="card-footer">
-        <a href={ link } className="btn btn-primary" target="_blank" rel="noreferrer">
-          <small className="text-muted">Leia a notícia aqui</small>
-        </a>
-        <button
-          type="button"
-          onClick={ () => handleFavorite() }
-        >
-          { isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+  const generateApiImage = () => {
+    const baseUrl = 'https://agenciadenoticias.ibge.gov.br/';
+    const imagesjson: ImagesApi = JSON.parse(imagens as string);
+    const image = `${baseUrl}${imagesjson.image_intro}`;
+    return image;
+  };
 
-        </button>
+  return (
+    <>
+
+      <img src={ generateApiImage() } alt="imagem da noticia" />
+      <div className={ styles.card }>
+        <div className={ styles.cardHeader }>
+          <span> Notícia mais recente </span>
+          <h4 className="card-title">{ titulo }</h4>
+        </div>
+        <div className={ styles.cardBody }>
+          <p className="card-text">{ introducao }</p>
+
+          <div className={ styles.cardMoreInfo }>
+            <span>
+              { calculateDaysSincePublication(dataPublicacao) }
+            </span>
+            <a href={ link } target="_blank" rel="noreferrer">
+              Leia a notícia aqui
+            </a>
+          </div>
+
+        </div>
+        <div className={ styles.cardFooter }>
+          <button
+            type="button"
+            onClick={ () => handleFavorite() }
+          >
+            { isFavorite
+              ? <img src={ redHeart } alt="red heart" />
+              : <img src={ heartIcon } alt="heart icon" />}
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

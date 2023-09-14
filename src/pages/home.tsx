@@ -17,7 +17,6 @@ function Home() {
         const data = await fetch('https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=1');
         const json = await data.json();
         setNews(json);
-        console.log(json.items);
       };
       initialFetch();
     },
@@ -34,6 +33,7 @@ function Home() {
             introducao={ news.items[0].introducao }
             dataPublicacao={ news.items[0].data_publicacao }
             link={ news.items[0].link }
+            imagens={ news.items[0].imagens }
           />
         )}
       </section>

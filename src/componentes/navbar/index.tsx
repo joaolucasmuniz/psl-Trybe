@@ -41,7 +41,7 @@ function NavBar(props: NavBarProps) {
         </Hidden>
 
         <Hidden smUp>
-          <Button onClick={ () => setOpen(true) }>
+          <Button color="inherit" onClick={ () => setOpen(true) }>
             <MenuOutlined />
             <Typography>
               filtrar categorias
@@ -51,7 +51,7 @@ function NavBar(props: NavBarProps) {
       </Toolbar>
 
       <SwipeableDrawer
-        anchor="right"
+        anchor="left"
         open={ open }
         onOpen={ () => setOpen(true) }
         onClose={ () => setOpen(false) }
