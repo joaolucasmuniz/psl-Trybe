@@ -34,7 +34,7 @@ function News(props: NewsProps) {
   const handleClick = async () => {
     try {
       const data = await fetchApi(
-        `${apiUrls[type as keyof typeof apiUrls]}&page=${page}`,
+        `${apiUrls[type as keyof typeof apiUrls]}&page=${page + 1}`,
       );
       setNews([...news, ...data.items]);
       setPage(page + 1);
