@@ -3,14 +3,13 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 3rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .newsImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
   border-radius: 0.5rem;
 }
 
@@ -50,7 +49,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    font-size: 0.8rem;
+    width: 100%;
+  }
+  
+  .cardMoreInfo span {
+    margin-right: 1rem;
+    width: 50%;
   
   }
   
@@ -61,6 +66,8 @@
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     text-align: center;
+    font-size: 0.8rem;
+    width: 50%;
   }
   
   .cardMoreInfo a:hover {
@@ -93,6 +100,7 @@
   @media screen and (max-width: 1024px) {
     .mainCardContainer {
       flex-direction: column;
+      box-shadow:-1px 27px 49px -31px rgba(0,0,0,0.53);
     }
   }
   

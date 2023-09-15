@@ -36,10 +36,11 @@
   text-align: center;
 }
 
-.buttonSeeMore:hover {
+.buttonSeeMore:active {
   background: rgba(5, 212, 101, 1);
   color: white;
 }
+
 
 @media screen and (max-width: 1024px) {
   .newsContainer {

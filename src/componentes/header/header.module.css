@@ -3,14 +3,20 @@
     align-items: center;
     justify-content: space-between;
     height: 5rem;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+
 }
 
-.headerContainer img{
+.logoContainer{
   margin: 0;
   padding: 0;
-  height: 5rem;
+  height: 100%;
+  width: auto;
+}
+
+.logoContainer img{
+  height: 100%;
+  width: auto;
 }
 
 .titleContainer{
