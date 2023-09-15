@@ -16,8 +16,8 @@ function News(props: NewsProps) {
 
   const apiUrls = {
     all: 'https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=10',
-    news: 'http://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia&qtd=10',
-    release: 'http://servicodados.ibge.gov.br/api/v3/noticias/?tipo=release&qtd=10',
+    news: 'https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia&qtd=10',
+    release: 'https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=release&qtd=10',
   };
 
   useEffect(() => {
