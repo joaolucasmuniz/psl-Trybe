@@ -1,29 +1,34 @@
-.headerContainer{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 5rem;
-    width: 100%;
-
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  width: 100%;
 }
 
-.logoContainer{
+.logoContainer {
   margin: 0;
   padding: 0;
   height: 100%;
   width: auto;
+  position: relative;
 }
 
-.logoContainer img{
+.logoContainer img {
   height: 100%;
   width: auto;
+  display: block;
 }
 
-.titleContainer{
+.titleContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
   background: rgba(14, 14, 14, 0.85);
   color: white;
 }
+
+
+
