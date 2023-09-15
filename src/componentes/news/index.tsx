@@ -16,8 +16,8 @@ function News(props: NewsProps) {
 
   const apiUrls = {
     all: 'https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=10',
-    news: 'http://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia&qtd=9',
-    release: 'http://servicodados.ibge.gov.br/api/v3/noticias/?tipo=release&qtd=9',
+    news: 'http://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia&qtd=10',
+    release: 'http://servicodados.ibge.gov.br/api/v3/noticias/?tipo=release&qtd=10',
   };
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function News(props: NewsProps) {
       setNews(data.items);
     };
     initialFetch();
-  }, [type]);
+  }, []);
 
   const handleClick = async () => {
     try {
