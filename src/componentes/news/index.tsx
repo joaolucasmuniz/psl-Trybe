@@ -29,7 +29,7 @@ function News(props: NewsProps) {
       setNews(data.items);
     };
     initialFetch();
-  }, []);
+  }, [type]);
 
   const handleClick = async () => {
     try {
