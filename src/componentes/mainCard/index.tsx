@@ -16,7 +16,7 @@ function MainCard(props : CardProps) {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     setFavorites(storedFavorites);
     setIsFavorite(storedFavorites.some((item: CardProps) => item.id === id));
-  }, [id, setFavorites]);
+  }, [favorites]);
 
   const handleFavorite = () => {
     let updatedFavorites: CardProps[] = [];
@@ -71,8 +71,8 @@ function MainCard(props : CardProps) {
             onClick={ () => handleFavorite() }
           >
             { isFavorite
-              ? <img src={ redHeart } alt="red heart" />
-              : <img src={ heartIcon } alt="heart icon" />}
+              ? <img data-testid="mainCardRedHeart" src={ redHeart } alt="red heart" />
+              : <img data-testid="mainCardHeart" src={ heartIcon } alt="heart icon" />}
           </button>
         </div>
       </div>
