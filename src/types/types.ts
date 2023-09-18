@@ -31,6 +31,7 @@ export type CardProps = {
   link : string,
   id : number
   imagens?: string
+  type?: string
 };
 
 export type ImagesApi = {

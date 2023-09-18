@@ -2,41 +2,46 @@ import { useState } from 'react';
 import { ChevronLeftOutlined, MenuOutlined } from '@mui/icons-material';
 import { AppBar, Button, Divider, Hidden, IconButton,
   List, ListItem, SwipeableDrawer, Toolbar, Typography } from '@mui/material';
+import styles from './navbar.module.css';
 
 type NavBarProps = {
   setCurrentNav: (nav: string) => void;
+  currentNav: string;
 };
 function NavBar(props: NavBarProps) {
-  const { setCurrentNav } = props;
+  const { setCurrentNav, currentNav } = props;
   const [open, setOpen] = useState(false);
 
   const navigation = [
     {
-      name: 'Mais recentes', id: 'all',
+      id: 'Mais recentes',
     },
     {
-      name: 'Realease', id: 'Release',
+      id: 'Release',
     },
     {
-      name: 'Notícias', id: 'Notícias',
+      id: 'Notícias',
     },
     {
-      name: 'Favoritas', id: 'Favoritas',
+      id: 'Favoritas',
     },
   ];
 
   return (
-    <AppBar color="default" position="static">
+    <AppBar data-testid="navbar" color="default" position="static">
       <Toolbar>
         <Hidden smDown>
           <div style={ { flex: 1 } }>
             {navigation.map((item) => (
               <Button
+                className={ `${styles.navButton} 
+              ${currentNav === item.id ? styles.active : ''}` }
+                data-testid={ `${item.id}-category-filter` }
                 key={ item.id }
                 onClick={ () => setCurrentNav(item.id) }
                 color="inherit"
               >
-                {item.name}
+                {item.id}
               </Button>
             ))}
           </div>
@@ -47,7 +52,7 @@ function NavBar(props: NavBarProps) {
           <Button color="inherit" onClick={ () => setOpen(true) }>
             <MenuOutlined />
             <Typography marginLeft="1.2rem">
-              filtrar categorias
+              {currentNav}
             </Typography>
           </Button>
         </Hidden>
@@ -76,13 +81,17 @@ function NavBar(props: NavBarProps) {
           {navigation.map((item) => (
             <ListItem key={ item.id }>
               <Button
+                className={ `${styles.navButton} 
+                ${currentNav === item.id ? styles.botaoAtivo : ''}` }
+                data-testid={ `${item.id}-category-filter` }
                 onClick={ () => {
                   setCurrentNav(item.id);
                   setOpen(false);
                 } }
                 color="inherit"
               >
-                {item.name}
+                {item.id}
+
               </Button>
             </ListItem>
           ))}

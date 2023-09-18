@@ -16,7 +16,7 @@ function MainCard(props : CardProps) {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     setFavorites(storedFavorites);
     setIsFavorite(storedFavorites.some((item: CardProps) => item.id === id));
-  }, [favorites]);
+  }, [id, setFavorites]);
 
   const handleFavorite = () => {
     let updatedFavorites: CardProps[] = [];

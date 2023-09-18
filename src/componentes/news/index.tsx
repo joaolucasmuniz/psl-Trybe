@@ -23,9 +23,6 @@ function News(props: NewsProps) {
   useEffect(() => {
     const initialFetch = async () => {
       const data = await fetchApi(apiUrls[type as keyof typeof apiUrls]);
-      if (type === 'all') {
-        setNews(data.items.shift());
-      }
       setNews(data.items);
     };
     initialFetch();
@@ -48,6 +45,7 @@ function News(props: NewsProps) {
       <div className={ styles.newsContainer }>
         {news.map((item, index) => (
           <Card
+            type={ type }
             id={ item.id }
             key={ index }
             titulo={ item.titulo }

@@ -8,7 +8,7 @@ import styles from './home.module.css';
 import NavBar from '../componentes/navbar';
 
 function Home() {
-  const [currentNav, setCurrentNav] = useState('all');
+  const [currentNav, setCurrentNav] = useState('Mais recentes');
   const [news, setNews] = useState<Newsdata>();
 
   useEffect(
@@ -38,17 +38,15 @@ function Home() {
         )}
       </section>
 
-      <NavBar setCurrentNav={ setCurrentNav } />
+      <NavBar setCurrentNav={ setCurrentNav } currentNav={ currentNav } />
 
       <section className={ styles.newsSection }>
-        {currentNav === 'all'
-      && <News type="all" />}
-        {currentNav === 'Release'
-      && <News type="release" />}
-        {currentNav === 'Notícias'
-      && <News type="news" />}
-        {currentNav === 'Favoritas'
-      && <Favorites />}
+
+        {currentNav === 'Mais recentes' && <News type="all" />}
+        {currentNav === 'Release' && <News type="release" />}
+        {currentNav === 'Notícias' && <News type="news" />}
+        {currentNav === 'Favoritas' && <Favorites />}
+
       </section>
     </section>
 
