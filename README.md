@@ -14,9 +14,18 @@ Antes de começar a usar a aplicação, certifique-se de que você tenha as segu
 ## Como Usar
 
 1. **Clone o repositório:**
-
-   ```bash
-   git clone git@github.com:joaolucasmuniz/Recipes-App.git
-   ```
-
-2.  
+```bash
+git clone git@github.com:joaolucasmuniz/psl-Trybe.git
+```
+2.  **Navegue até o diretório do projeto:**
+``` bash
+cd psl-Trybe
+```
+3. **Instale as dependencias:**
+``` bash
+npm install
+```
+4. **Abra no seu Navegador:**
+``` bash
+npm run dev 
+```
