@@ -82,7 +82,7 @@ function NavBar(props: NavBarProps) {
             <ListItem key={ item.id }>
               <Button
                 className={ `${styles.navButton} 
-                ${currentNav === item.id ? styles.botaoAtivo : ''}` }
+                ${currentNav === item.id ? styles.active : ''}` }
                 data-testid={ `${item.id}-category-filter` }
                 onClick={ () => {
                   setCurrentNav(item.id);

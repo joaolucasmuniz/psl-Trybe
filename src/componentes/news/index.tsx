@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Button } from '@mui/material';
 import Card from '../card';
 import fetchApi from '../../helpers/fetchApi';
 import { NewsInfo } from '../../types/types';
@@ -55,12 +56,14 @@ function News(props: NewsProps) {
           />
         ))}
       </div>
-      <button
+      <Button
+        variant="outlined"
+        color="error"
         className={ styles.buttonSeeMore }
         onClick={ () => handleClick() }
       >
         ver mais
-      </button>
+      </Button>
     </>
   );
 }

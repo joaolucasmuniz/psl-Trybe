@@ -18,6 +18,14 @@ function MainCard(props : CardProps) {
     setIsFavorite(storedFavorites.some((item: CardProps) => item.id === id));
   }, [id, setFavorites]);
 
+  useEffect(
+    () => {
+      const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      setIsFavorite(storedFavorites.some((item: CardProps) => item.id === id));
+    },
+    [favorites],
+  );
+
   const handleFavorite = () => {
     let updatedFavorites: CardProps[] = [];
 
