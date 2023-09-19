@@ -1,4 +1,4 @@
-const allNwes = {
+const allNews = {
   count: 5423,
   page: 1,
   totalPages: 543,
@@ -150,4 +150,4 @@ const allNwes = {
   ],
 };
 
-export default allNwes;
+export default allNews;

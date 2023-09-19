@@ -6,6 +6,7 @@ import Favorites from '../componentes/favorites';
 
 import styles from './home.module.css';
 import NavBar from '../componentes/navbar';
+import fetchApi from '../helpers/fetchApi';
 
 function Home() {
   const [currentNav, setCurrentNav] = useState('Mais recentes');
@@ -14,9 +15,9 @@ function Home() {
   useEffect(
     () => {
       const initialFetch = async () => {
-        const data = await fetch('https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=1');
-        const json = await data.json();
-        setNews(json);
+        const data = await fetchApi('https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=1');
+        setNews(data);
+        console.count('fetch');
       };
       initialFetch();
     },

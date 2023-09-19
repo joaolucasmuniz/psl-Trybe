@@ -39,13 +39,18 @@ function Card(props : CardProps) {
         <h4 data-testid="cardTitle" className="card-title">{ titulo }</h4>
       </div>
       <div className={ styles.cardBody }>
-        <p className="card-text">{ introducao }</p>
+        <p data-testid="cardText" className="card-text">{ introducao }</p>
 
         <div className={ styles.cardMoreInfo }>
           <span>
             { calculateDaysSincePublication(dataPublicacao) }
           </span>
-          <a href={ link } target="_blank" rel="noreferrer">
+          <a
+            data-testid="btnNoticiaCompleta"
+            href={ link }
+            target="_blank"
+            rel="noreferrer"
+          >
             Leia a notícia aqui
           </a>
         </div>
@@ -57,8 +62,8 @@ function Card(props : CardProps) {
           onClick={ () => handleFavorite() }
         >
           { isFavorite
-            ? <img src={ redHeart } alt="red heart" />
-            : <img src={ herartIcon } alt="heart icon" />}
+            ? <img data-testid="btnRedHeart" src={ redHeart } alt="red heart" />
+            : <img data-testid="btnHeart" src={ herartIcon } alt="heart icon" />}
         </button>
       </div>
     </div>

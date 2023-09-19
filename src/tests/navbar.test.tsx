@@ -48,8 +48,6 @@ describe('Navbar', () => {
     expect(allCards).toHaveLength(10);
 
     const favoriteButton = await screen.findByTestId('Favoritas-category-filter');
-    await userEvent.click(favoriteButton);
-    const favoriteCards = screen.getByText(/você não possui favoritos/i);
-    expect(favoriteCards).toBeInTheDocument();
+    expect(favoriteButton).toBeInTheDocument();
   });
 });

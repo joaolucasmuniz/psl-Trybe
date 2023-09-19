@@ -11,7 +11,7 @@ type NewsProps = {
 };
 
 function News(props: NewsProps) {
-  const { type } = props;
+  const { type = 'all' } = props;
   const [news, setNews] = useState<NewsInfo[]>([]);
   const [page, setPage] = useState(1);
 
@@ -27,7 +27,7 @@ function News(props: NewsProps) {
       setNews(data.items);
     };
     initialFetch();
-  }, [type]);
+  }, []);
 
   const handleClick = async () => {
     try {
@@ -57,6 +57,7 @@ function News(props: NewsProps) {
         ))}
       </div>
       <Button
+        data-testid="btnSeeMore"
         variant="outlined"
         color="error"
         className={ styles.buttonSeeMore }
