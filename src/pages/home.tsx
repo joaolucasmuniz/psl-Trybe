@@ -17,7 +17,6 @@ function Home() {
       const initialFetch = async () => {
         const data = await fetchApi('https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=1');
         setNews(data);
-        console.count('fetch');
       };
       initialFetch();
     },
