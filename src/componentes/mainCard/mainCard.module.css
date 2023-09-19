@@ -101,6 +101,7 @@
     .mainCardContainer {
       flex-direction: column;
       box-shadow:-1px 27px 49px -31px rgba(0,0,0,0.53);
+      margin-top: 0;
     }
   }
   
