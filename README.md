@@ -45,3 +45,5 @@ npm install
 ``` bash
 npm run dev 
 ```
+## LInk do deploy:
+https://news-ten-chi.vercel.app/
